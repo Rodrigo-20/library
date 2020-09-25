@@ -90,6 +90,10 @@ th,td {
 .status-head{
     width: 15%;
 }
+.library-table .sort{
+    padding-left: 10px;
+    cursor: pointer;
+}
 .form button{
     width: 35%;
     font-size: 0.9em;
