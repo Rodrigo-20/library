@@ -43,16 +43,38 @@ function showBook (book,libraryRow=0){
         myLibrary.push(book);
         let row = document.createElement('tr');
         let tittle= document.createElement('td');
-        tittle.textContent=book.tittle;
         let author= document.createElement('td');
-        author.textContent=book.author;
         let pages= document.createElement('td');
+        let read=document.createElement('td');
+        let readIcon = document.createElement('i');
+        let trashIcon = document.createElement('i');
+        let deleete = document.createElement('td');
+        tittle.textContent=book.tittle;
+        author.textContent=book.author;
         pages.textContent=book.pages;
+       
+        
+        if(book.read=='yes'){
+            readIcon.setAttribute('class','fa fa-check');
+        }
+        else{
+            readIcon.setAttribute('class','fa fa-close')
+        }
+        readIcon.addEventListener('click',changeStatus);
+
+        trashIcon.setAttribute('class','fa fa-trash-o');
+        trashIcon.classList.add('trash');
+        read.appendChild(readIcon);
+        deleete.appendChild(trashIcon);
+        trashIcon.addEventListener('click',deleteBook);
+
         tableBody.appendChild(row);
         row.appendChild(tittle);
         row.appendChild(author);
-        row.appendChild(pages);}
-
+        row.appendChild(pages);
+        row.appendChild(read);
+        row.appendChild(deleete);
+    }
         books = tableBody.querySelectorAll('tr');
 }
 
@@ -60,7 +82,7 @@ function addBookToLibrary (){
     let tittle=document.getElementById('tittle').value;
     let author=document.getElementById('author').value;
     let pages=document.getElementById('pages').value;
-    let read;
+    
     readIt.forEach(rbutton =>{
         rbutton.checked ? read = rbutton.value : 0
     } )
@@ -72,9 +94,7 @@ function addBookToLibrary (){
 }
 
 function closeForm (){
-    
     document.querySelector('.bg-form').style.display='none';
-    
 }
 
 function openForm (){
@@ -90,9 +110,37 @@ function displayLibrary(){
     myLibrary.forEach(book=>showBook(book));
 }
 
+function deleteBook(){ 
+    let row = this.parentNode.parentNode;
+    let tittles=row.childNodes[0].textContent;
+    myLibrary = myLibrary.filter(book => {
+        return !(book.tittle==tittles);
+    })
+    tableBody.removeChild(row);
+    console.log(myLibrary);
+}
+
+function changeStatus(){
+    let row = this.parentNode.parentNode;
+    let tittles=row.childNodes[0].textContent;
+    let statusRow = myLibrary.filter(book => {
+        return book.tittle==tittles
+    })
+    if(this.getAttribute('class')=='fa fa-check'){
+        this.removeAttribute('class');
+        this.setAttribute('class','fa fa-close')
+        statusRow[0].read='no';
+        
+    }
+    else if(this.getAttribute('class')=='fa fa-close'){
+        this.removeAttribute('class');
+        this.setAttribute('class','fa fa-check')
+        statusRow[0].read='yes';
+    }
+}
+
 function sortBooks (){
     order*=-1
-    
     myLibrary.sort((a,b)=>{
         let first;
         let second;
@@ -125,5 +173,5 @@ function sortBooks (){
 
 const element = new Book("The element","Ken Robinson",240,"yes")
 const nineTeen = new Book("1984","George Orwell","208","yes")
-
+const alquim = new Book("The alquimist","Paulo Coelho",215,"yes");
  displayLibrary();
