@@ -25,11 +25,12 @@ inputText.forEach(input => {
 
 
 
-function Book (tittle,author,pages,read){
+function Book (tittle,author,pages,read,authorLink=0){
     this.tittle=tittle
     this.author=author
     this.pages=pages
     this.read=read
+    this.link=authorLink
     showBook(this);
 }
 
@@ -60,13 +61,17 @@ function showBook (book,libraryRow=0){
         else{
             readIcon.setAttribute('class','fa fa-close')
         }
+        if(book.link){
+            let autLink = document.createElement('a');
+            
+        }
         readIcon.addEventListener('click',changeStatus);
 
         trashIcon.setAttribute('class','fa fa-trash-o');
         trashIcon.classList.add('trash');
         read.appendChild(readIcon);
         deleete.appendChild(trashIcon);
-        trashIcon.addEventListener('click',deleteBook);
+        trashIcon.addEventListener('click',deleteBook.bind(row,book));
 
         tableBody.appendChild(row);
         row.appendChild(tittle);
@@ -110,13 +115,15 @@ function displayLibrary(){
     myLibrary.forEach(book=>showBook(book));
 }
 
-function deleteBook(){ 
-    let row = this.parentNode.parentNode;
-    let tittles=row.childNodes[0].textContent;
+function deleteBook(books){ 
+    //let row = this.parentNode.parentNode;
+    //let tittles=row.childNodes[0].textContent;
+    let tittles=this.childNodes[0].textContent;
     myLibrary = myLibrary.filter(book => {
         return !(book.tittle==tittles);
     })
-    tableBody.removeChild(row);
+    
+    tableBody.removeChild(this);
     console.log(myLibrary);
 }
 
