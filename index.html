@@ -1,59 +1,66 @@
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Library</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Library</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div id="container">
-       <table class="library-table">
-         <col class='tittle-head'>
-         <col class='author-head'>
-         <col class="pages-head">
-         <col class="status-head">
-         
-         <thead>
-           <tr>
-             <th>Tittle <span id="tittle-sort" class="sort">a / z</span></th>
-             <th>Author <span id="author-sort" class="sort">a / z</span></th>
-             <th>Pages <span  id="pages-sort" class="sort"> 1 / 99</span></th>
-             <th>Status </th>
-           </tr>
-         </thead>
-         <tbody class="table-body"></tbody>
-       </table>
+  <div id="container">
+    <table class="library-table">
+      <col class='tittle-head'>
+      <col class='author-head'>
+      <col class="pages-head">
+      <col class="status-head">
+
+      <thead>
+        <tr>
+          <th>Tittle <span id="tittle-sort" class="sort">a / z</span></th>
+          <th>Author <span id="author-sort" class="sort">a / z</span></th>
+          <th>Pages <span id="pages-sort" class="sort"> 1 / 99</span></th>
+          <th>Status </th>
+        </tr>
+      </thead>
+      <tbody class="table-body"></tbody>
+    </table>
+  </div>
+  <div class="bg-form">
+    <div class="form">
+      <div id="close">+</div>
+      <span class="info-tittle">
+        <h3>Book information</h3>
+      </span>
+      <li>
+        <label for="tittle"><b>Tittle</b></label>
+        <input id="tittle" type="text" placeholder="Books tittle" name="tittle" required>
+      </li>
+      <li>
+        <label for="author"><b>Author</b></label>
+        <input id="author" type="text" placeholder="Author" name="author" required>
+      </li>
+      <li>
+        <label for="pag"><b>Pages</b></label>
+        <input id="pages" type="text" placeholder="200" name="pag">
+      </li>
+      <li id="read-item">
+        <span id="read">Read it ?</span>
+        <input id="read" type="radio" name="read" id="yes" value="yes">
+        <label for="yes">Yes</label>
+        <input id="noRead" type="radio" name="read" id="no" value="no">
+        <label for="no">No</label>
+      </li>
+      <button type="button" id="add">Add book</button>
     </div>
-    <div class="bg-form">
-          <div class="form">
-            <div id="close">+</div>  
-            <span class="info-tittle"><h3>Book information</h3></span>
-            <li>
-              <label for="tittle"><b>Tittle</b></label>
-              <input id="tittle" type="text" placeholder="Books tittle" name="tittle"  required>
-            </li>
-            <li>
-              <label for="author"><b>Author</b></label>
-              <input id="author" type="text" placeholder="Author" name="author"   required>
-            </li>
-            <li>
-              <label for="pag"><b>Pages</b></label>
-              <input id="pages" type="text" placeholder="200" name="pag" >
-            </li>
-            <li id="read-item">
-            <span id="read" >Read it ?</span>
-            <input id="read" type="radio" name="read" id="yes" value="yes">
-            <label for="yes">Yes</label>
-            <input id="noRead" type="radio" name="read" id="no" value="no">
-            <label for="no">No</label>  
-            </li>      
-            <button type="button" id="add">Add book</button>
-          </div>
-        
-      </div>
-      <button type='button' id="newBook">New Book</button>
-    <script src="script.js"></script>
+
+  </div>
+  <div id="newBook">
+    <button type='button'>New Book</button>
+  </div>
+  <script src="script.js"></script>
 </body>
+
 </html>

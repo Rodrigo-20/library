@@ -121,3 +121,13 @@ tr:hover{
     margin-left: 10px;
     
 }
+
+#newBook {
+    display: flex;
+    justify-content:center ;
+}
+
+#newBook button{
+    width: 100px;
+    padding: 3px;
+}
